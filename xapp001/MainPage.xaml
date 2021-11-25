@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="xapp001.MainPage">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Xamarin App" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <Entry x:Name="phoneNumber" Placeholder="Phone Numer" Margin="5" HeightRequest="50" />
+        <Button Text="Login" Clicked="Button_Clicked" BackgroundColor="Blue"
+                TextColor="White"
+                HeightRequest="50"/>
+        <Label
+                            x:Name="CoverageResultLbl"
+                            Text="Coverage Result"
+                               Margin="0,20,0,0"
+                               
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand" 
+                               TextColor="Blue"/>
+        <Label
+                            x:Name="AuthResultLbl"
+                            Text="Authorization Result"
+                               Margin="0,10,0,0"
+                               
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand" 
+                               TextColor="Blue"/>
+        <Label
+                            x:Name="PhoneVerifiedLbl"
+                            Text="PhoneVerified Result"
+                               Margin="0,10,0,0"
+                               
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand" 
+                               TextColor="Blue"/>
+
+        <Label
+                            x:Name="MobileIDLbl"
+                            Text="MobileID Result"
+                               Margin="0,10,0,0"
+                               
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="FillAndExpand" 
+                               TextColor="Blue"/>
+    </StackLayout>
+
+</ContentPage>

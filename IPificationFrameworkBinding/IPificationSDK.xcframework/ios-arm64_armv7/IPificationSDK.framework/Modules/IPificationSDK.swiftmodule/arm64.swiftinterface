@@ -1,0 +1,190 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
+// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name IPificationSDK
+import IPificationSDK.CocoaAsyncSocket
+import CoreTelephony
+import IPificationSDK.DNSResolver
+import Foundation
+@_exported import IPificationSDK
+import Network
+import NetworkExtension
+import Swift
+import UIKit
+public protocol CoverageCallback : IPificationSDK.CallbackProtocol {
+}
+public protocol RawSocketProtocol : IPificationSDK.CallbackProtocol {
+}
+@_hasMissingDesignatedInitializers public class ConnectionManager {
+  public static func checkOnly3G() -> (Swift.Bool, Swift.Bool)
+  @objc deinit
+}
+public protocol ResponseProtocol : AnyObject {
+  func getPlainResponse() -> Swift.String
+  func getError() -> Swift.String
+  func getCode() -> Swift.String?
+  func getState() -> Swift.String?
+  func isAvailable() -> Swift.Bool
+}
+public protocol RequestProtocol : AnyObject {
+  var readTimeout: Foundation.TimeInterval { get set }
+  var connectTimeout: Foundation.TimeInterval { get set }
+  var dnsConnectionTimeout: Foundation.TimeInterval { get set }
+  var isIPv4PreferredOverIPv6: Swift.Bool { get set }
+  func toUri() -> Foundation.URLComponents
+  func parseToURLComponents() -> Foundation.URLComponents?
+  func formatedHeaders(enableCarrierHeaders: Swift.Bool) -> Swift.String
+}
+@_inheritsConvenienceInitializers @objc(CoverageService) public class CoverageService : ObjectiveC.NSObject {
+  public var debug: Swift.Bool
+  @objc public var callbackSuccess: ((IPificationSDK.CoverageResponse) -> Swift.Void)?
+  @objc public var callbackFailed: ((IPificationSDK.CellularException) -> Swift.Void)?
+  @objc public var callbackLog: ((Swift.String) -> Swift.Void)?
+  @objc override dynamic public init()
+  @objc public func checkCoverage()
+  @objc public func checkCoverage(_ customCoverageRequest: IPificationSDK.CoverageRequest? = nil)
+  @objc public func checkCoverage(phoneNumber phone: Swift.String)
+  @objc public func checkCoverage(phoneNumber phone: Swift.String, _ customCoverageRequest: IPificationSDK.CoverageRequest? = nil)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc(CoverageResponse) public class CoverageResponse : ObjectiveC.NSObject, IPificationSDK.ResponseProtocol {
+  @objc public func getOperatorCode() -> Swift.String?
+  @objc public func isAvailable() -> Swift.Bool
+  @objc public func getError() -> Swift.String
+  @objc public func getPlainResponse() -> Swift.String
+  @objc public func getCode() -> Swift.String?
+  @objc public func getState() -> Swift.String?
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol AuthorizationCallback : IPificationSDK.CallbackProtocol {
+}
+@_hasMissingDesignatedInitializers @objc(AuthorizationResponse) public class AuthorizationResponse : ObjectiveC.NSObject, IPificationSDK.ResponseProtocol {
+  @objc public func getPlainResponse() -> Swift.String
+  @objc public func getCode() -> Swift.String?
+  @objc public func getState() -> Swift.String?
+  @objc public func getError() -> Swift.String
+  @objc public func isAvailable() -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(AuthorizationService) public class AuthorizationService : ObjectiveC.NSObject {
+  public var debug: Swift.Bool
+  @objc public var callbackSuccess: ((IPificationSDK.AuthorizationResponse) -> Swift.Void)?
+  @objc public var callbackFailed: ((IPificationSDK.CellularException) -> Swift.Void)?
+  @objc public var callbackLog: ((Swift.String) -> Swift.Void)?
+  @objc override dynamic public init()
+  @objc public func doAuthorization(_ authRequest: IPificationSDK.AuthorizationRequest? = nil)
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(IPConfiguration) public class IPConfiguration : ObjectiveC.NSObject {
+  @objc public static let shared: IPificationSDK.IPConfiguration
+  @objc public var coverageServiceEndpoint: Swift.String
+  @objc public var authServiceEndpoint: Swift.String
+  @objc public var redirectUri: Swift.String
+  @objc public var clientId: Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension UIDevice {
+  public static let deviceModelName: Swift.String
+}
+public enum ResponseType {
+  case json
+  case xml
+  case string
+  public static func == (a: IPificationSDK.ResponseType, b: IPificationSDK.ResponseType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class CellularResponse {
+  public var responseType: IPificationSDK.ResponseType
+  public func getData() -> Any
+  @objc deinit
+}
+@objc(CoverageRequest) public class CoverageRequest : ObjectiveC.NSObject, IPificationSDK.RequestProtocol {
+  public var readTimeout: Swift.Double
+  public var connectTimeout: Swift.Double
+  public var dnsConnectionTimeout: Swift.Double
+  public var isIPv4PreferredOverIPv6: Swift.Bool
+  public init(endpoint: Foundation.URL?, queryParams: [Swift.String : Swift.String]?, headers: [Swift.String : Swift.String]?, connectTimeout: Foundation.TimeInterval, readTimeout: Foundation.TimeInterval, dnsConnectionTimeout: Foundation.TimeInterval)
+  public class Builder {
+    public init()
+    public func addHeader(key: Swift.String, value: Swift.String)
+    public func addQueryParam(key: Swift.String, value: Swift.String)
+    public func setConnectTimeout(value: Foundation.TimeInterval)
+    public func setReadTimeout(value: Foundation.TimeInterval)
+    public func setIPv4OverIPv6(value: Swift.Bool)
+    public func build() -> IPificationSDK.CoverageRequest
+    @objc deinit
+  }
+  public func toUri() -> Foundation.URLComponents
+  public func parseToURLComponents() -> Foundation.URLComponents?
+  public func formatedHeaders(enableCarrierHeaders: Swift.Bool) -> Swift.String
+  @objc override dynamic public init()
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(AuthorizationRequest) public class AuthorizationRequest : ObjectiveC.NSObject, IPificationSDK.RequestProtocol {
+  public var readTimeout: Swift.Double
+  public var connectTimeout: Swift.Double
+  public var dnsConnectionTimeout: Swift.Double
+  public var isIPv4PreferredOverIPv6: Swift.Bool
+  @objc override dynamic public init()
+  public init(endpoint: Foundation.URL)
+  public init(endpoint: Foundation.URL?, queryParams: [Swift.String : Swift.String]?, headers: [Swift.String : Swift.String]?, connectTimeout: Foundation.TimeInterval, readTimeout: Foundation.TimeInterval, isIPv4PreferredOverIPv6: Swift.Bool, dnsConnectionTimeout: Foundation.TimeInterval, scope: Swift.String?, state: Swift.String?)
+  @_inheritsConvenienceInitializers @objc public class Builder : ObjectiveC.NSObject {
+    @objc override dynamic public init()
+    public init(url: Swift.String)
+    @objc public func addHeader(key: Swift.String, value: Swift.String)
+    @objc public func setScope(value: Swift.String)
+    @objc public func setState(value: Swift.String)
+    @objc public func addQueryParam(key: Swift.String, value: Swift.String)
+    @objc public func setConnectTimeout(value: Foundation.TimeInterval)
+    @objc public func setReadTimeout(value: Foundation.TimeInterval)
+    public func setIPv4OverIPv6(value: Swift.Bool)
+    @objc public func build() -> IPificationSDK.AuthorizationRequest
+    @objc deinit
+  }
+  public func toUri() -> Foundation.URLComponents
+  public func parseToURLComponents() -> Foundation.URLComponents?
+  public func formatedHeaders(enableCarrierHeaders: Swift.Bool) -> Swift.String
+  @objc deinit
+}
+public protocol CallbackProtocol : AnyObject {
+  func onSuccess(response: IPificationSDK.ResponseProtocol)
+  func onError(error: IPificationSDK.CellularException)
+  func continueRequest(_ url: Swift.String)
+  func onLogs(_ log: Swift.String)
+}
+@objc public enum CellularError : Swift.Int {
+  case notActive
+  case callback_nil
+  case request_nil
+  case connection_error
+  case general
+  case cannot_connect
+  case validation
+  case authorized_failed
+  case check_coverage_failed
+  public func name() -> Swift.String
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc(CellularException) public class CellularException : ObjectiveC.NSObject, Swift.Error {
+  public init(_ error: IPificationSDK.CellularError, _ message: Swift.String)
+  @objc public func getErrorMessage() -> Swift.String
+  @objc public var localizedDescription: Swift.String {
+    @objc get
+  }
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension IPificationSDK.ResponseType : Swift.Equatable {}
+extension IPificationSDK.ResponseType : Swift.Hashable {}
+extension IPificationSDK.CellularError : Swift.Equatable {}
+extension IPificationSDK.CellularError : Swift.Hashable {}
+extension IPificationSDK.CellularError : Swift.RawRepresentable {}

@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{6BD27EB7-09B5-4F04-B020-801263B9E5C1}|Default">
+  <MonoDevelop.Ide.ItemProperties.IPificationAARBinding PreferredExecutionTarget="Android.Pixel_XL_API_26" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="IPificationAARBinding/Transforms/Metadata.xml">
+    <Files>
+      <File FileName="IPificationAARBinding/Transforms/Metadata.xml" Line="15" Column="20" />
+      <File FileName="IPificationAARBinding/Properties/AssemblyInfo.cs" />
+      <File FileName="IPificationAARBinding/Transforms/EnumFields.xml" />
+      <File FileName="IPificationAARBinding/Transforms/EnumMethods.xml" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="IPificationAARBinding" expanded="True">
+            <Node name="IPificationAARBinding" expanded="True">
+              <Node name="Jars" expanded="True" selected="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="Transforms" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
